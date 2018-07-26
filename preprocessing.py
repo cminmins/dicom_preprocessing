@@ -11,7 +11,6 @@ output_folder = "C:\\Users\\sungmin\\Desktop\\701-702_reslice"
 search_dir = os.listdir(INPUT_FOLDER)
 print(search_dir)
 
-##테스트용
 ### 폴더구성은 CT와 MRI\\T2로 되어있음. 별도로 수정해도됨
 for i in search_dir:
     current_dir = INPUT_FOLDER + '\\' + i
