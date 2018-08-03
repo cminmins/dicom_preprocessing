@@ -65,9 +65,9 @@ for i in search_dir:
 
     # dcm2nii 실행하는 코드(dicom -> nii) / Popen의 인자값은 dcm2nii의 위치로 수정하면됨,
     print("start dcm2nii")
-    sub_ct = subprocess.Popen(["C:\\Users\\sungmin\\Desktop\\dicom2nii\\dcm2nii.exe", path_ct], stdout=subprocess.PIPE)
+    sub_ct = subprocess.Popen(["C:\\Users\\sungmin\\Desktop\\Elysium\\C2Mpreprocessing\\dicom2nii\\dcm2nii.exe", path_ct], stdout=subprocess.PIPE)
     print(sub_ct.stdout.read())  # Deadlock
-    sub_mr = subprocess.Popen(["C:\\Users\\sungmin\\Desktop\\dicom2nii\\dcm2nii.exe", path_t2], stdout=subprocess.PIPE)
+    sub_mr = subprocess.Popen(["C:\\Users\\sungmin\\Desktop\\Elysium\\C2Mpreprocessing\\dicom2nii\\dcm2nii.exe", path_t2], stdout=subprocess.PIPE)
     print(sub_mr.stdout.read())  # Deadlock
 
     ###해당 경로에서 .nii 확장자 찾기(절대경로로 저장됨)
@@ -114,9 +114,9 @@ for i in search_dir:
     nib.save(newCT_image, out_ct + "\\Reslice_ct_" + i + ".nii")
     nib.save(newT2_image, out_mr + "\\Reslice_mri_" + i + ".nii")
 
-    ### Nii 파일 -> Dicom + split3d
-    env_path = os.environ
-    med_split = subprocess.Popen(["medcon", "-f", "*.nii", "-c", "dicom", "-split3d", "-n", "-qc", "-rs", "-fv"], stdout=subprocess.PIPE, env=env_path, cwd=out_ct)
-    print(med_split.stdout.read())
-    med_split = subprocess.Popen(["medcon", "-f", "*.nii", "-c", "dicom", "-split3d", "-n", "-qc", "-rs", "-fv"], stdout=subprocess.PIPE, env=env_path, cwd=out_mr)
-    print(med_split.stdout.read())
+    # ### Nii 파일 -> Dicom + split3d
+    # env_path = os.environ
+    # med_split = subprocess.Popen(["medcon", "-f", "*.nii", "-c", "dicom", "-split3d", "-n", "-qc", "-rs", "-fv"], stdout=subprocess.PIPE, env=env_path, cwd=out_ct)
+    # print(med_split.stdout.read())
+    # med_split = subprocess.Popen(["medcon", "-f", "*.nii", "-c", "dicom", "-split3d", "-n", "-qc", "-rs", "-fv"], stdout=subprocess.PIPE, env=env_path, cwd=out_mr)
+    # print(med_split.stdout.read())
